@@ -24,7 +24,7 @@ const PaymentPage = () => {
     setIsProcessing(true);
     setPaymentStatus('');
     try {
-      const response = await axios.post('http://localhost:5000/api/payments/create-intent', {
+      const response = await axios.post('https://fronttest-taupe.vercel.app/api/payments/create-intent', {
         amount,
         currency: 'USD',
       });

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const AdminMembersList = () => {
@@ -8,7 +8,7 @@ const AdminMembersList = () => {
     const fetchMembers = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/admin/members-list', {
+        const response = await axios.get('https://fronttest-taupe.vercel.app/api/admin/members-list', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMembers(response.data);

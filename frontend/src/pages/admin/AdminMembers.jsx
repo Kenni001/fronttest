@@ -10,7 +10,7 @@ const AdminMembers = () => {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/members', {
+      const response = await axios.get('https://fronttest-taupe.vercel.app/api/admin/members', {
         params: { search, page },
       });
       setMembers(response.data.members);
@@ -28,7 +28,7 @@ const AdminMembers = () => {
     if (!window.confirm('Are you sure you want to delete this member?')) return;
   
     try {
-      const response = await axios.delete(`http://localhost:5000/api/members/${id}`, {
+      const response = await axios.delete(`https://fronttest-taupe.vercel.app/api/members/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
         },

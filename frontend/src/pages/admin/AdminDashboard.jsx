@@ -14,7 +14,7 @@ const AdminDashboard = () => {
   // Fetch dashboard data with filters
   const fetchDashboardData = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/dashboard', {
+      const response = await axios.get('https://fronttest-taupe.vercel.app/api/admin/dashboard', {
         headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
         params: filters // Send filters as query parameters
       });

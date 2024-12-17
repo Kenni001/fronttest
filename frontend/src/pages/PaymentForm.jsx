@@ -60,7 +60,7 @@ const PaymentPage = () => {
   useEffect(() => {
     const createPaymentIntent = async () => {
       try {
-        const { data } = await axios.post('http://localhost:5000/api/payments/create-intent', {
+        const { data } = await axios.post('https://fronttest-taupe.vercel.app/api/payments/create-intent', {
           amount: 100, // Replace with dynamic amount
           currency: 'usd', // Replace with dynamic currency if needed
         });

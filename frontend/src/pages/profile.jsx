@@ -21,7 +21,7 @@ const Profile = () => {
           return navigate('/login'); // Redirect to login if no token
         }
 
-        const response = await axios.get('http://localhost:5000/api/auth/profile', {
+        const response = await axios.get('https://fronttest-taupe.vercel.app/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -46,7 +46,7 @@ const Profile = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.put(
-        'http://localhost:5000/api/auth/profile',
+        'https://fronttest-taupe.vercel.app/api/auth/profile',
         { firstName, lastName, phone, address },
         {
           headers: { Authorization: `Bearer ${token}` },

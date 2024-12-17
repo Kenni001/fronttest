@@ -16,7 +16,7 @@ const MembershipValidator = () => {
 
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/membership/validate', { plannerId });
+      const response = await axios.post('https://fronttest-taupe.vercel.app/api/membership/validate', { plannerId });
       setMembershipData(response.data.data); // Display membership details
       setError(null);
     } catch (err) {

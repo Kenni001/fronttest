@@ -6,7 +6,7 @@ const PaymentHistory = () => {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/payments/history');
+      const { data } = await axios.get('https://fronttest-taupe.vercel.app/api/payments/history');
       setHistory(data);
     };
     fetchHistory();

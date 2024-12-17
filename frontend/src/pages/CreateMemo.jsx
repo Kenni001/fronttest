@@ -16,7 +16,7 @@ const CreateMemo = () => {
 
     try {
       // Sending POST request to create a memo and trigger email notifications
-      const response = await fetch("http://localhost:5000/api/memos/create", {
+      const response = await fetch("https://fronttest-taupe.vercel.app/api/memos/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

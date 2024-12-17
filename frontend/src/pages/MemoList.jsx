@@ -6,7 +6,7 @@ const MemoList = () => {
   useEffect(() => {
     const fetchMemos = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/memos");
+        const response = await fetch("https://fronttest-taupe.vercel.app/api/memos");
         const data = await response.json();
         setMemos(data); // Store the fetched memos in the state
       } catch (error) {

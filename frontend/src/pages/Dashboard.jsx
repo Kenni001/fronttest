@@ -20,7 +20,7 @@ const Dashboard = () => {
           return;
         }
 
-        const response = await axios.get('http://localhost:5000/api/auth/profile', {
+        const response = await axios.get('https://fronttest-taupe.vercel.app/api/auth/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
 
