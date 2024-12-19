@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import LoggedInNavbar from './LoggedInNavbar';
+import LoggedInNavbar from '../components/LoggedInNavbar';
 
 const MembershipValidator = () => {
   const [plannerId, setPlannerId] = useState(''); // State for the planner ID input

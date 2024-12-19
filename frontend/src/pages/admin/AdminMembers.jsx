@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
-import AdminNavbar from '../adminNavbar';
+import AdminNavbar from '../../components/adminNavbar';
 
 const AdminMembers = () => {
   const [members, setMembers] = useState([]);
@@ -43,7 +43,6 @@ const AdminMembers = () => {
       alert('Failed to delete the member');
     }
   };
-  
 
   return (
     <>
@@ -67,25 +66,25 @@ const AdminMembers = () => {
           <table className="min-w-full text-left table-auto">
             <thead className="bg-indigo-600 text-white">
               <tr>
-                <th className="px-6 py-3 font-semibold">Name</th>
-                <th className="px-6 py-3 font-semibold">Email</th>
-                <th className="px-6 py-3 font-semibold">Membership Status</th>
-                <th className="px-6 py-3 font-semibold">Renewal Status</th>
-                <th className="px-6 py-3 font-semibold">Expiry Date</th>
-                <th className="px-6 py-3 font-semibold text-center">Actions</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Name</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Email</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Membership Status</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Renewal Status</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Expiry Date</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
               {members.length > 0 ? (
                 members.map((member) => (
                   <tr key={member._id} className="border-b hover:bg-gray-100 transition">
-                    <td className="px-6 py-3 text-gray-700">
+                    <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">
                       {member.firstName} {member.lastName}
                     </td>
-                    <td className="px-6 py-3 text-gray-700">{member.email}</td>
-                    <td className="px-6 py-3">
+                    <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">{member.email}</td>
+                    <td className="px-6 py-3 text-sm sm:text-base">
                       <span
-                        className={`px-3 py-1 rounded-full text-sm ${
+                        className={`px-3 py-1 rounded-full text-xs sm:text-sm ${
                           member.membershipStatus === 'active'
                             ? 'bg-green-100 text-green-800'
                             : 'bg-red-100 text-red-800'
@@ -94,9 +93,9 @@ const AdminMembers = () => {
                         {member.membershipStatus}
                       </span>
                     </td>
-                    <td className="px-6 py-3">
+                    <td className="px-6 py-3 text-sm sm:text-base">
                       <span
-                        className={`px-3 py-1 rounded-full text-sm ${
+                        className={`px-3 py-1 rounded-full text-xs sm:text-sm ${
                           member.renewalStatus === 'renewed'
                             ? 'bg-blue-100 text-blue-800'
                             : 'bg-yellow-100 text-yellow-800'
@@ -105,8 +104,8 @@ const AdminMembers = () => {
                         {member.renewalStatus}
                       </span>
                     </td>
-                    <td className="px-6 py-3 text-gray-700">
-                    {member.membershipExpiryDate ? new Date(member.membershipExpiryDate).toLocaleDateString() : 'N/A'}
+                    <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">
+                      {member.membershipExpiryDate ? new Date(member.membershipExpiryDate).toLocaleDateString() : 'N/A'}
                     </td>
                     <td className="px-6 py-3 text-center">
                       <button
@@ -138,7 +137,7 @@ const AdminMembers = () => {
           >
             Previous
           </button>
-          <span className="text-gray-700 font-semibold">Page {page}</span>
+          <span className="text-gray-700 font-semibold text-sm sm:text-base">Page {page}</span>
           <button
             onClick={() => setPage((prev) => prev + 1)}
             disabled={members.length === 0}

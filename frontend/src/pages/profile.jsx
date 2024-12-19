@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import LoggedInNavbar from './LoggedInNavbar';
+import LoggedInNavbar from '../components/LoggedInNavbar';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -61,25 +61,25 @@ const Profile = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state while data is being fetched
+    return <div className="flex justify-center items-center min-h-screen">Loading...</div>;
   }
 
   return (
     <div>
       <LoggedInNavbar />
-      <div className="container mx-auto p-8 flex justify-center items-center min-h-screen">
-        <div className="bg-white shadow-lg rounded-lg w-full sm:w-3/4 md:w-1/2 lg:w-1/3 p-8">
-          <h1 className="text-3xl font-semibold text-center mb-6">Your Profile</h1>
+      <div className="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
+        <div className="bg-white shadow-lg rounded-lg w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl p-6 sm:p-8">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-center mb-6">Your Profile</h1>
           <div className="space-y-6">
             {editing ? (
-              <form onSubmit={handleSaveChanges} className="space-y-4">
+              <form onSubmit={handleSaveChanges} className="grid gap-4">
                 <div>
                   <label className="block font-medium text-gray-700">First Name</label>
                   <input
                     type="text"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
-                    className="input-field"
+                    className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
@@ -89,7 +89,7 @@ const Profile = () => {
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    className="input-field"
+                    className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
@@ -99,7 +99,7 @@ const Profile = () => {
                     type="text"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="input-field"
+                    className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -108,24 +108,27 @@ const Profile = () => {
                     type="text"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
-                    className="input-field"
+                    className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
-                <div className="flex space-x-4 mt-4">
-                  <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                <div className="flex justify-between gap-4">
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                  >
                     Save Changes
                   </button>
                   <button
                     type="button"
                     onClick={() => setEditing(false)}
-                    className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+                    className="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
                   >
                     Cancel
                   </button>
                 </div>
               </form>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-4 text-gray-800">
                 <p><strong>First Name:</strong> {user.firstName}</p>
                 <p><strong>Last Name:</strong> {user.lastName}</p>
                 <p><strong>Email:</strong> {user.email}</p>
@@ -134,9 +137,9 @@ const Profile = () => {
                 <p><strong>Membership Status:</strong> {user.membershipStatus}</p>
                 <p><strong>Membership Type:</strong> {user.membershipType}</p>
                 <p><strong>Planner ID:</strong> {user.plannerId}</p>
-                <div className="mt-6 text-center">
+                <div className="text-center mt-6">
                   <button
-                    className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                    className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                     onClick={() => setEditing(true)}
                   >
                     Edit Profile

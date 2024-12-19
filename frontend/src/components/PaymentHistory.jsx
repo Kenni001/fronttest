@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const PaymentHistory = () => {
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const { data } = await axios.get('https://fronttest-taupe.vercel.app/api/payments/history');
+      const { data } = await axios.get(
+        "https://fronttest-taupe.vercel.app/api/payments/history"
+      );
       setHistory(data);
     };
     fetchHistory();
