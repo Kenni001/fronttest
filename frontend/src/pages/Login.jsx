@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const Login = () => {
@@ -101,9 +101,9 @@ const Login = () => {
 
           <p className="mt-4 text-sm text-center">
             Don't have an account?{' '}
-            <a href="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
+            <Link to="/register" className="text-indigo-600 hover:text-indigo-700 font-medium">
               Register here
-            </a>
+            </Link>
           </p>
         </div>
       </div>
