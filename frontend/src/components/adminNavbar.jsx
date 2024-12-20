@@ -23,7 +23,7 @@ const AdminNavbar = () => {
         <div className="flex items-center space-x-4">
           <img src={logo} alt="ZIP Logo" className="h-16 w-16" />
           <span className="text-xl font-bold text-white hover:text-gray-200 transform transition-all duration-300 ease-in-out hover:scale-110">
-            Źambia 𝓘nstitute of 𝓟lanners
+            Zambia Institute of Planners
           </span>
         </div>
 

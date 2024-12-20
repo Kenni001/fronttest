@@ -1,22 +1,28 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import AdminNavbar from '../../components/adminNavbar';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import AdminNavbar from "../../components/adminNavbar";
 
 const AdminMembers = () => {
   const [members, setMembers] = useState([]);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('https://fronttest-taupe.vercel.app/api/admin/members', {
-        params: { search, page },
-      });
+      const response = await axios.get(
+        "https://fronttest-taupe.vercel.app/api/admin/members",
+        {
+          params: { search, page },
+        }
+      );
       setMembers(response.data.members);
       setTotal(response.data.totalMembers); // Adjust to match the backend response field
     } catch (err) {
-      console.error('Error fetching members:', err.response?.data || err.message);
+      console.error(
+        "Error fetching members:",
+        err.response?.data || err.message
+      );
     }
   };
 
@@ -24,23 +30,59 @@ const AdminMembers = () => {
     fetchMembers();
   }, [search, page]);
 
+  // const handleDelete = async (id) => {
+  //   if (!window.confirm('Are you sure you want to delete this member?')) return;
+
+  //   try {
+  //     const response = await axios.delete(`https://fronttest-taupe.vercel.app/api/members/${id}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
+  //       },
+  //     });
+
+  //     if (response.status === 200) {
+  //       alert('Member deleted successfully');
+  //       fetchMembers(); // Refresh the member list after deletion
+  //     }
+  //   } catch (err) {
+  //     console.error('Error deleting member:', err);
+  //     alert('Failed to delete the member');
+  //   }
+  // };
+
   const handleDelete = async (id) => {
-    if (!window.confirm('Are you sure you want to delete this member?')) return;
-  
+    if (!window.confirm("Are you sure you want to delete this member?")) return;
+
     try {
-      const response = await axios.delete(`https://fronttest-taupe.vercel.app/api/members/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
-        },
-      });
-  
+      const token = localStorage.getItem("adminToken");
+      console.log("Token",token)
+      if (!token) {
+        alert("You must be logged in to perform this action.");
+        return;
+      }
+
+      const response = await axios.delete(
+        `https://fronttest-taupe.vercel.app/api/members/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("Response",response)
       if (response.status === 200) {
-        alert('Member deleted successfully');
-        fetchMembers(); // Refresh the member list after deletion
+        alert("Member deleted successfully");
+        fetchMembers(); // Refresh the member list
+      } else {
+        alert("Failed to delete the member. Please try again.");
       }
     } catch (err) {
-      console.error('Error deleting member:', err);
-      alert('Failed to delete the member');
+      console.error(
+        "Error deleting member:",
+        err.response?.data || err.message
+      );
+      alert("An error occurred while deleting the member.");
     }
   };
 
@@ -48,7 +90,9 @@ const AdminMembers = () => {
     <>
       <AdminNavbar />
       <div className="p-6 bg-gray-50 min-h-screen">
-        <h2 className="text-3xl font-extrabold text-gray-700 mb-6">Manage Members</h2>
+        <h2 className="text-3xl font-extrabold text-gray-700 mb-6">
+          Manage Members
+        </h2>
 
         {/* Search Bar */}
         <div className="flex justify-between items-center mb-6">
@@ -66,28 +110,45 @@ const AdminMembers = () => {
           <table className="min-w-full text-left table-auto">
             <thead className="bg-indigo-600 text-white">
               <tr>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Name</th>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Email</th>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Membership Status</th>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Renewal Status</th>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base">Expiry Date</th>
-                <th className="px-6 py-3 font-semibold text-sm sm:text-base text-center">Actions</th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">
+                  Name
+                </th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">
+                  Email
+                </th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">
+                  Membership Status
+                </th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">
+                  Renewal Status
+                </th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base">
+                  Expiry Date
+                </th>
+                <th className="px-6 py-3 font-semibold text-sm sm:text-base text-center">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               {members.length > 0 ? (
                 members.map((member) => (
-                  <tr key={member._id} className="border-b hover:bg-gray-100 transition">
+                  <tr
+                    key={member._id}
+                    className="border-b hover:bg-gray-100 transition"
+                  >
                     <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">
                       {member.firstName} {member.lastName}
                     </td>
-                    <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">{member.email}</td>
+                    <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">
+                      {member.email}
+                    </td>
                     <td className="px-6 py-3 text-sm sm:text-base">
                       <span
                         className={`px-3 py-1 rounded-full text-xs sm:text-sm ${
-                          member.membershipStatus === 'active'
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
+                          member.membershipStatus === "active"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-red-100 text-red-800"
                         }`}
                       >
                         {member.membershipStatus}
@@ -96,16 +157,20 @@ const AdminMembers = () => {
                     <td className="px-6 py-3 text-sm sm:text-base">
                       <span
                         className={`px-3 py-1 rounded-full text-xs sm:text-sm ${
-                          member.renewalStatus === 'renewed'
-                            ? 'bg-blue-100 text-blue-800'
-                            : 'bg-yellow-100 text-yellow-800'
+                          member.renewalStatus === "renewed"
+                            ? "bg-blue-100 text-blue-800"
+                            : "bg-yellow-100 text-yellow-800"
                         }`}
                       >
                         {member.renewalStatus}
                       </span>
                     </td>
                     <td className="px-6 py-3 text-gray-700 text-sm sm:text-base">
-                      {member.membershipExpiryDate ? new Date(member.membershipExpiryDate).toLocaleDateString() : 'N/A'}
+                      {member.membershipExpiryDate
+                        ? new Date(
+                            member.membershipExpiryDate
+                          ).toLocaleDateString()
+                        : "N/A"}
                     </td>
                     <td className="px-6 py-3 text-center">
                       <button
@@ -119,7 +184,10 @@ const AdminMembers = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="px-6 py-3 text-center text-gray-500 italic">
+                  <td
+                    colSpan="6"
+                    className="px-6 py-3 text-center text-gray-500 italic"
+                  >
                     No members found.
                   </td>
                 </tr>
@@ -137,7 +205,9 @@ const AdminMembers = () => {
           >
             Previous
           </button>
-          <span className="text-gray-700 font-semibold text-sm sm:text-base">Page {page}</span>
+          <span className="text-gray-700 font-semibold text-sm sm:text-base">
+            Page {page}
+          </span>
           <button
             onClick={() => setPage((prev) => prev + 1)}
             disabled={members.length === 0}
