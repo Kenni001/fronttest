@@ -1,22 +1,36 @@
 // src/components/Footer.jsx
-import React from 'react';
-import 'font-awesome/css/font-awesome.min.css';
+import React from "react";
+import "font-awesome/css/font-awesome.min.css";
 
 const Footer = () => {
   return (
     <footer className="bg-blue-800 text-white py-6 mt-12">
       <div className="container mx-auto px-6 text-center">
         {/* Contact Information */}
-        <p className="text-lg font-semibold mb-2">Zambia Institute of Planners - ZIP</p>
+        <p className="text-lg font-semibold mb-2">
+          Zambia Institute of Planners - (ZIP)
+        </p>
         <p className="text-sm mb-4">Contact us:</p>
         <p className="text-sm">
-          Email: <a href="mailto:zip.planner@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">zip.planner@gmail.com</a>
+          Email:{" "}
+          <a
+            href="mailto:info@Zambiainstituteofplanners.org.zm "
+            className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
+          >
+            info@Zambiainstituteofplanners.org.zm
+          </a>
         </p>
+        <p className="text-sm mb-4">Phone: +260773992358</p>
         <p className="text-sm mb-4">
-          Phone: 0975720015 / 0976653703 / 0964526170
-        </p>
-        <p className="text-sm mb-4">
-          Website: <a href="http://www.zambiainstituteofplanners.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors duration-300">www.zambiainstituteofplanners.com</a>
+          Website:{" "}
+          <a
+            href="http://www.zambiainstituteofplanners.org.zm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
+          >
+            www.zambiainstituteofplanners.org.zm
+          </a>
         </p>
 
         {/* Social Icons */}
@@ -32,12 +46,10 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <p className="mt-6 text-sm">
-          All rights reserved &copy; 2024
-        </p>
+        <p className="mt-6 text-sm">All rights reserved &copy; 2024</p>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

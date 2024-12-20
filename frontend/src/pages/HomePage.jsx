@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import 'font-awesome/css/font-awesome.min.css';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "font-awesome/css/font-awesome.min.css";
 import img1 from "../assets/Banner2.jpg";
 import img2 from "../assets/Banner1.jpg";
 import img3 from "../assets/Banner3.jpg";
 import event1 from "../assets/Event1.jpg";
 import event2 from "../assets/Event2.jpg";
 import event3 from "../assets/Event3.jpg";
-import Navbar from '../components/Navbar';
+import Navbar from "../components/Navbar";
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -16,7 +16,9 @@ const HomePage = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % bannerImages.length);
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % bannerImages.length
+      );
     }, 5000); // Change image every 5 seconds
     return () => clearInterval(interval);
   }, []);
@@ -51,7 +53,8 @@ const HomePage = () => {
             About Zambia Institute of Planners
           </h2>
           <p className="text-base sm:text-lg text-gray-600 mb-6 px-4">
-            The Zambia Institute of Planners (ZIP) is dedicated to enhancing the standards of urban and regional planning across Zambia.
+            The Zambia Institute of Planners (ZIP) is dedicated to enhancing the
+            standards of urban and regional planning across Zambia.
           </p>
           <Link
             to="/about"
@@ -70,17 +73,23 @@ const HomePage = () => {
             <div className="benefit-card text-center p-6 bg-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
               <i className="fas fa-users fa-3x mb-4 text-blue-600"></i>
               <h4 className="text-xl font-semibold mb-2">Networking</h4>
-              <p className="text-base text-gray-600">Connect with professionals in planning from across Zambia.</p>
+              <p className="text-base text-gray-600">
+                Connect with professionals in planning from across Zambia.
+              </p>
             </div>
             <div className="benefit-card text-center p-6 bg-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
               <i className="fas fa-calendar-alt fa-3x mb-4 text-blue-600"></i>
               <h4 className="text-xl font-semibold mb-2">Events</h4>
-              <p className="text-base text-gray-600">Participate in conferences, AGMs, and more.</p>
+              <p className="text-base text-gray-600">
+                Participate in conferences, AGMs, and more.
+              </p>
             </div>
             <div className="benefit-card text-center p-6 bg-blue-100 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
               <i className="fas fa-chalkboard-teacher fa-3x mb-4 text-blue-600"></i>
               <h4 className="text-xl font-semibold mb-2">Mentorship</h4>
-              <p className="text-base text-gray-600">Receive guidance from seasoned planning professionals.</p>
+              <p className="text-base text-gray-600">
+                Receive guidance from seasoned planning professionals.
+              </p>
             </div>
           </div>
         </section>
@@ -92,11 +101,18 @@ const HomePage = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
             <div className="event-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-              <img src={event1} alt="Event 1" className="w-full h-48 object-cover" />
+              <img
+                src={event1}
+                alt="Event 1"
+                className="w-full h-48 object-cover"
+              />
               <div className="card-body p-4">
-                <h5 className="text-lg sm:text-xl font-semibold mb-2">Annual General Meeting</h5>
+                <h5 className="text-lg sm:text-xl font-semibold mb-2">
+                  Annual General Meeting
+                </h5>
                 <p className="text-base text-gray-600 mb-4">
-                  Join us for the Annual General Meeting and network with top planners.
+                  Join us for the Annual General Meeting and network with top
+                  planners.
                 </p>
                 <Link
                   to="/events"
@@ -107,11 +123,17 @@ const HomePage = () => {
               </div>
             </div>
             <div className="event-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-              <img src={event2} alt="Event 2" className="w-full h-48 object-cover" />
+              <img
+                src={event2}
+                alt="Event 2"
+                className="w-full h-48 object-cover"
+              />
               <div className="card-body p-4">
-                <h5 className="text-lg sm:text-xl font-semibold mb-2">Regional Planning Workshop</h5>
+                <h5 className="text-lg sm:text-xl font-semibold mb-2">
+                  National Planning Conference
+                </h5>
                 <p className="text-base text-gray-600 mb-4">
-                  A workshop focusing on regional planning practices and policies.
+                  An annual event promoting integrated development planning.
                 </p>
                 <Link
                   to="/events"
@@ -122,9 +144,15 @@ const HomePage = () => {
               </div>
             </div>
             <div className="event-card bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition duration-300">
-              <img src={event3} alt="Event 3" className="w-full h-48 object-cover" />
+              <img
+                src={event3}
+                alt="Event 3"
+                className="w-full h-48 object-cover"
+              />
               <div className="card-body p-4">
-                <h5 className="text-lg sm:text-xl font-semibold mb-2">Networking Gala</h5>
+                <h5 className="text-lg sm:text-xl font-semibold mb-2">
+                  Networking Gala
+                </h5>
                 <p className="text-base text-gray-600 mb-4">
                   Connect with other planners and leaders in the industry.
                 </p>

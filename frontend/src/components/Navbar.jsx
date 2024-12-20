@@ -40,7 +40,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-2">
           <img src={logo} alt="ZIP Logo" className="h-16 w-16" />
           <span className="text-2xl font-bold text-white hover:text-gray-200 transform transition-all duration-300 ease-in-out hover:scale-110">
-            Źambia 𝓘nstitute of 𝓟lanners
+            Źambia Institute of Planners
           </span>
         </Link>
 
