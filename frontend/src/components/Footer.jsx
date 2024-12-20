@@ -43,6 +43,15 @@ const Footer = () => {
           >
             <i className="fab fa-facebook-square fa-2x"></i>
           </a>
+
+          <a
+            href="https://www.linkedin.com/company/zambiaplanners/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-125"
+          >
+            <i className="fab fa-linkedin-square fa-2x"></i>
+          </a>
         </div>
 
         {/* Copyright */}

@@ -111,8 +111,8 @@ const HomePage = () => {
                   Annual General Meeting
                 </h5>
                 <p className="text-base text-gray-600 mb-4">
-                  Join us for the Annual General Meeting and network with top
-                  planners.
+                  Join the Annual General Meeting that promotes planning among
+                  registered professionals.
                 </p>
                 <Link
                   to="/events"
