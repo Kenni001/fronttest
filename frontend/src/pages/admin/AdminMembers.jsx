@@ -55,22 +55,22 @@ const AdminMembers = () => {
 
     try {
       const token = localStorage.getItem("adminToken");
-      console.log("Token",token)
+      console.log("Token", token);
       if (!token) {
         alert("You must be logged in to perform this action.");
         return;
       }
 
       const response = await axios.delete(
-        `https://fronttest-taupe.vercel.app/api/members/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `https://fronttest-taupe.vercel.app/api/members/${id}`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
       );
 
-      console.log("Response",response)
+      console.log("Response", response);
       if (response.status === 200) {
         alert("Member deleted successfully");
         fetchMembers(); // Refresh the member list
