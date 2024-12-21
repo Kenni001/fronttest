@@ -30,59 +30,24 @@ const AdminMembers = () => {
     fetchMembers();
   }, [search, page]);
 
-  // const handleDelete = async (id) => {
-  //   if (!window.confirm('Are you sure you want to delete this member?')) return;
-
-  //   try {
-  //     const response = await axios.delete(`https://fronttest-taupe.vercel.app/api/members/${id}`, {
-  //       headers: {
-  //         Authorization: `Bearer ${localStorage.getItem('adminToken')}`,
-  //       },
-  //     });
-
-  //     if (response.status === 200) {
-  //       alert('Member deleted successfully');
-  //       fetchMembers(); // Refresh the member list after deletion
-  //     }
-  //   } catch (err) {
-  //     console.error('Error deleting member:', err);
-  //     alert('Failed to delete the member');
-  //   }
-  // };
-
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this member?")) return;
 
     try {
-      const token = localStorage.getItem("adminToken");
-      console.log("Token", token);
-      if (!token) {
-        alert("You must be logged in to perform this action.");
-        return;
-      }
-
+      // Make the delete request
       const response = await axios.delete(
-        `https://fronttest-taupe.vercel.app/api/members/${id}`
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // }
+        `https://fronttest-taupe.vercel.app/api/admin/members/${id}`
       );
 
-      console.log("Response", response);
+      console.log(response);
+
       if (response.status === 200) {
         alert("Member deleted successfully");
-        fetchMembers(); // Refresh the member list
-      } else {
-        alert("Failed to delete the member. Please try again.");
+        fetchMembers(); // Refresh the member list after deletion
       }
     } catch (err) {
-      console.error(
-        "Error deleting member:",
-        err.response?.data || err.message
-      );
-      alert("An error occurred while deleting the member.");
+      console.error("Error deleting member:", err);
+      alert("Failed to delete the member");
     }
   };
 
