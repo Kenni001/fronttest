@@ -6,16 +6,21 @@ import Navbar from "../components/Navbar";
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
+    middleName: "",
     lastName: "",
+    maidenName: "",
     email: "",
     password: "",
     username: "",
     phone: "",
     address: "",
+    city: "",
+    state: "",
     membershipType: "I",
   });
 
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -74,7 +79,7 @@ const Register = () => {
               />
             </div>
 
-            {/* First Name and Last Name */}
+            {/* First Name, Middle Name, and Last Name */}
             <div>
               <label
                 htmlFor="firstName"
@@ -94,6 +99,22 @@ const Register = () => {
             </div>
             <div>
               <label
+                htmlFor="middleName"
+                className="block text-gray-600 font-medium mb-2"
+              >
+                Middle Name
+              </label>
+              <input
+                type="text"
+                name="middleName"
+                value={formData.middleName}
+                onChange={handleChange}
+                id="middleName"
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              />
+            </div>
+            <div>
+              <label
                 htmlFor="lastName"
                 className="block text-gray-600 font-medium mb-2"
               >
@@ -109,8 +130,24 @@ const Register = () => {
                 required
               />
             </div>
+            <div>
+              <label
+                htmlFor="maidenName"
+                className="block text-gray-600 font-medium mb-2"
+              >
+                Maiden Name
+              </label>
+              <input
+                type="text"
+                name="maidenName"
+                value={formData.maidenName}
+                onChange={handleChange}
+                id="maidenName"
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              />
+            </div>
 
-            {/* Address Field (Full Width) */}
+            {/* Address, City, and State Fields */}
             <div className="sm:col-span-2">
               <label
                 htmlFor="address"
@@ -127,8 +164,91 @@ const Register = () => {
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
               />
             </div>
+            <div>
+              <label
+                htmlFor="city"
+                className="block text-gray-600 font-medium mb-2"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                id="city"
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="state"
+                className="block text-gray-600 font-medium mb-2"
+              >
+                State
+              </label>
+              <select
+                name="state"
+                value={formData.state}
+                onChange={handleChange}
+                id="state"
+                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
+              >
+                <option value="">Select State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
 
-            {/* Email and Password (Side by Side) */}
+            {/* Email and Password */}
             <div>
               <label
                 htmlFor="email"
@@ -146,7 +266,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div>
+            <div className="relative">
               <label
                 htmlFor="password"
                 className="block text-gray-600 font-medium mb-2"
@@ -154,7 +274,7 @@ const Register = () => {
                 Password
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
@@ -162,9 +282,17 @@ const Register = () => {
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
                 required
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-9 text-indigo-600 hover:text-indigo-800 font-medium focus:outline-none"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
             </div>
 
-            {/* Phone and Membership Type (Side by Side) */}
+            {/* Phone and Membership Type */}
             <div>
               <label
                 htmlFor="phone"
@@ -195,9 +323,9 @@ const Register = () => {
                 id="membershipType"
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ease-in-out"
               >
-                <option value="I">Type I</option>
-                <option value="II">Type II</option>
-                <option value="III">Type III</option>
+                <option value="I">Spatial Planning</option>
+                <option value="II">Socio-economic Planning</option>
+                <option value="III">Environmental Planning</option>
               </select>
             </div>
 
