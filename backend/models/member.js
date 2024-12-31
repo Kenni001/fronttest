@@ -1,21 +1,32 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const memberSchema = new mongoose.Schema(
+const MemberSchema = new mongoose.Schema(
   {
     firstName: { type: String, required: true },
+    middleName: { type: String },
     lastName: { type: String, required: true },
+    maidenName: { type: String },
     email: { type: String, required: true, unique: true },
-    membershipStatus: { type: String, enum: ['active', 'inactive'], default: 'inactive' },
-    renewalStatus: { type: String, enum: ['pending', 'renewed'], default: 'pending' },
-    membershipStartDate: { type: Date, default: Date.now },
-    membershipExpiryDate: { type: Date, default: function() {
-      // Default expiry date is 1 year from the membership start date
-      return new Date(this.membershipStartDate).setFullYear(new Date(this.membershipStartDate).getFullYear() + 1);
-    }},
+    phone: { type: String },
+    address: { type: String },
+    city: { type: String },
+    state: { type: String },
+    membershipStatus: {
+      type: String,
+      enum: ["active", "inactive", "pending"],
+      default: "inactive",
+    },
+    membershipStartDate: { type: Date },
+    membershipExpiryDate: { type: Date },
+    membershipType: {
+      type: String,
+      enum: ["I", "II", "III"],
+      default: "I",
+    },
   },
   { timestamps: true }
 );
 
-const Member = mongoose.models.Member || mongoose.model('Member', memberSchema);
+const Member = mongoose.model("Member", MemberSchema);
 
 export default Member;
