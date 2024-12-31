@@ -1,4 +1,3 @@
-// src/components/Footer.jsx
 import React from "react";
 import "font-awesome/css/font-awesome.min.css";
 
@@ -43,7 +42,6 @@ const Footer = () => {
           >
             <i className="fab fa-facebook-square fa-2x"></i>
           </a>
-
           <a
             href="https://www.linkedin.com/company/zambiaplanners/"
             target="_blank"
@@ -51,6 +49,15 @@ const Footer = () => {
             className="text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-125"
           >
             <i className="fab fa-linkedin-square fa-2x"></i>
+          </a>
+          {/* Chnage the whatsapp message here later */}
+          <a
+            href="https://wa.me/260773992358?text=Hello%20Zambia%20Institute%20of%20Planners"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-blue-400 transition-all duration-300 transform hover:scale-125"
+          >
+            <i className="fab fa-whatsapp fa-2x"></i>
           </a>
         </div>
 

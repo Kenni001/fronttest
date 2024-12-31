@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', getMembers);
 
 // Change '/members/:id' to '/api/members/:id' to match the frontend request
-router.delete('/api/members/:id', async (req, res) => {
+router.delete('/api/admin/members/:id', async (req, res) => {
     const memberId = req.params.id;
   
     try {
