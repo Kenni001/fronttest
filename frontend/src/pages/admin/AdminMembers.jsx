@@ -31,23 +31,20 @@ const AdminMembers = () => {
   }, [search, page]);
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this member?")) return;
+    if (!window.confirm("Are you sure you want to delete this member? This will remove them from both members and users.")) return;
 
     try {
-      // Make the delete request
       const response = await axios.delete(
         `https://fronttest-taupe.vercel.app/api/admin/members/${id}`
       );
 
-      console.log(response);
-
       if (response.status === 200) {
-        alert("Member deleted successfully");
+        alert("Member successfully deleted from both collections");
         fetchMembers(); // Refresh the member list after deletion
       }
     } catch (err) {
       console.error("Error deleting member:", err);
-      alert("Failed to delete the member");
+      alert("Failed to delete the member: " + (err.response?.data?.message || err.message));
     }
   };
 
